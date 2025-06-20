@@ -26,23 +26,37 @@
         </p>
         <p class="text-center text-sm text-gray-600 mb-6">20-06-2025</p>
 
-        <form action="#" method="POST" class="space-y-4">
+        <form action="{{ route('peserta.store') }}" method="POST" class="space-y-4">
+    @csrf
             <div>
                 <label class="block mb-1 text-sm font-medium text-gray-700">Guru / Karyawan</label>
-                <select
-                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
-                    <option>Pilih Kode / Nama Anda</option>
+               <select
+                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    name="nama_peserta">
+                    <option value="">Pilih Kode / Nama Anda</option>
+                    <option value="A1 - DELLA SABRINA">A1 - DELLA SABRINA</option>
+                    <option value="A2 - RIZKI MAULANA">A2 - RIZKI MAULANA</option>
+                    <option value="A3 - FITRIANI">A3 - FITRIANI</option>
+                    <option value="A4 - HENDRI SETIAWAN">A4 - HENDRI SETIAWAN</option>
+                    <option value="A5 - SITI NURHALIZA">A5 - SITI NURHALIZA</option>
                 </select>
             </div>
 
             <div>
                 <label class="block mb-1 text-sm font-medium text-gray-700">Jabatan</label>
-                <select
-                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
-                    <option>Pilih Jabatan</option>
+                 <select
+                    class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    name="jabatan">
+                    <option value="">Pilih Jabatan</option>
+                    <option value="Guru Normatif">Guru Normatif</option>
+                    <option value="Guru Produktif">Guru Produktif</option>
+                    <option value="Waka Kesiswaan">Waka Kesiswaan</option>
+                    <option value="Kepala Sekolah">Kepala Sekolah</option>
+                    <option value="Tata Usaha">Tata Usaha</option>
+                    <option value="Staff Perpustakaan">Staff Perpustakaan</option>
                 </select>
             </div>
-
+<input type="hidden" name="ttd" id="ttdInput">
             <div>
                 <label class="block mb-1 text-sm font-medium text-gray-700">Tanda Tangan</label>
                 <canvas id="signature" width="400" height="150" class="w-full"></canvas>
@@ -50,7 +64,6 @@
                     class="bg-red-600 text-white text-sm px-4 py-2 rounded hover:bg-red-700 transition mt-3">
                     Reset
                 </button>
-
             </div>
 
             <div class="pt-4">
@@ -93,6 +106,14 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
     </script>
+    <script>
+    const form = document.querySelector('form'); // pastikan ini form utama
+    form.addEventListener('submit', function (e) {
+        const dataURL = canvas.toDataURL('image/png'); // Konversi canvas ke base64
+        document.getElementById('ttdInput').value = dataURL;
+    });
+</script>
+
 </body>
 
 </html>

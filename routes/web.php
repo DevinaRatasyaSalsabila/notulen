@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NotulenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('index'); 
-})->name('home');
+Route::get('/', [NotulenController::class, 'index'])->name('home');
 
-Route::get('/notulen', function () {
-    return view('notulen'); 
-})->name('notulen');
+Route::get('/notulen', [NotulenController::class, 'showNotulen'])->name('notulen');
 
-Route::get('/end', function () {
-    return view('end');
-})->name('end');
+Route::post('/notulen/store', [NotulenController::class, 'store'])->name('notulen.store');
+
+Route::post('/peserta/store', [NotulenController::class, 'storePeserta'])->name('peserta.store');
