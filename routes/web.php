@@ -18,10 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('index'); // index.blade.php
+    return view('index'); 
 })->name('home');
 
 Route::get('/notulen', function () {
-    return view('notulen'); // notulen.blade.php
+    return view('notulen'); 
 })->name('notulen');
 
+Route::get('/end', function () {
+    return view('end');
+})->name('end');

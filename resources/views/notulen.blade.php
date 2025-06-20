@@ -54,11 +54,12 @@
             </div>
 
             <div class="pt-4">
-                <button type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 rounded transition">
+                <a href="{{ route('end') }}"
+                    class="block text-center w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 rounded transition">
                     Simpan
-                </button>
+                </a>
             </div>
+
         </form>
     </div>
 
