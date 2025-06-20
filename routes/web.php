@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index'); // index.blade.php
+})->name('home');
+
+Route::get('/notulen', function () {
+    return view('notulen'); // notulen.blade.php
+})->name('notulen');
+
