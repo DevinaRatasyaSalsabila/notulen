@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class NotulenController extends Controller
 {
+    public function index(){
+        return view('index');
+    }
+
+    public function showNotulen(){
+        return view('notulen');
+    }
+
     public function store(Request $request)
         {
             $lastUser = Notulen::max('id_user') ?? 0;
@@ -27,7 +35,7 @@ class NotulenController extends Controller
 
             $notulen->save();
 
-            return redirect()->route('notulen.index')->with('success', 'Data notulen berhasil disimpan.');
+            return redirect()->route('home')->with('success', 'Data notulen berhasil disimpan.');
         }
 
         public function storePeserta(Request $request)
@@ -37,12 +45,12 @@ class NotulenController extends Controller
             'nama_peserta'   => 'required|string',
             'jabatan'        => 'nullable|string',
             'jabatan_rapat'  => 'nullable|string',
-            'ttd'            => 'nullable|string',
+           'ttd'            => 'nullable|string',
             'urutan'         => 'nullable|string|max:2',
         ]);
 
         PesertaNotulen::create($request->all());
 
-        return redirect()->route('peserta_notulen.index')->with('success', 'Peserta notulen berhasil ditambahkan.');
+        return redirect()->route('home')->with('success', 'Peserta notulen berhasil ditambahkan.');
     }
 }
